@@ -1,0 +1,50 @@
+#profile-page {
+    height: 100vh;
+    width: 100vw
+}
+
+#profile-page .user {
+    padding: 50px;
+
+    display: flex;
+    background-color: rgb(116, 116, 116);
+    color: white;
+    box-shadow: 0 0 20px 5px black;
+}
+
+#profile-page .user .go-back {
+    height: 100%;
+    border-radius: 8px;
+    padding: 10px;
+
+    display: flex;
+    box-shadow: 0 0 20px 2px rgb(56, 56, 56);
+
+    transition: background 0.3s;
+}
+
+#profile-page .user .go-back:hover {
+    background-color:  rgb(85, 85, 85);
+}
+
+#profile-page .user img {
+    height: 300px;
+    width: 300px;
+    margin-left: 50px;
+    border-radius: 20px;
+
+    box-shadow: 0 0 15px 2px black;
+}
+
+#profile-page .user .user-container {
+    width: 30%;
+    margin-left: 20px;
+}
+
+#profile-page .user .user-container p {
+    margin-top: 10px;
+}
+
+#profile-page .repos {
+    margin-top: 20px;
+}
