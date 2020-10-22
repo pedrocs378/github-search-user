@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
+import { VscError } from 'react-icons/vsc'
+import ReactLoading from 'react-loading'
 import { Link, useParams } from 'react-router-dom'
 
 import api from '../../services/api'
@@ -14,6 +16,13 @@ interface User {
     public_repos: number
 }
 
+interface RepositoryUser {
+    id: number
+    name: string
+    html_url: string
+    stargazers_count: number
+}
+
 interface UserParams {
     nickname: string
 }
@@ -21,13 +30,53 @@ interface UserParams {
 function Profile() {
     const params = useParams<UserParams>()
     const [user, setUser] = useState<User>()
+    const [repos, setRepos] = useState<RepositoryUser[]>([])
+    const [loaded, setLoaded] = useState(false)
+    const [notFound, setNotFound] = useState(false)
 
     useEffect(() => {
-        api.get(params.nickname).then(response => {
-            setUser(response.data)
-        })
-
+        api
+            .get(params.nickname)
+            .then(response => {
+                setUser(response.data)
+            })
+            .then(() => {
+                api
+                    .get(`${params.nickname}/repos`)
+                    .then(({ data }) => {
+                        console.log(data)
+                        setRepos(data)
+                        setLoaded(true)
+                    })
+            })
+            .catch(() => {
+                setNotFound(true)
+                setLoaded(true)
+            })
+        
     }, [params.nickname])
+
+    if (!loaded) {
+        return (
+            <div id="loading-user">
+                <ReactLoading type="spinningBubbles" color="black" height={60} width={60} />
+            </div>
+        )
+    }
+
+    if (notFound) {
+        return (
+            <div id="not-found-user">
+                <Link to="/" className="go-back" >
+                    <FaArrowLeft size={30} color="black" />
+                </Link>
+                <div className="not-found-container">
+                    <VscError size={50} />
+                    <h1>Usuário não encontrado</h1>
+                </div>
+            </div>
+        )
+    }
 
     return (
         <div id="profile-page">
@@ -39,17 +88,30 @@ function Profile() {
                 <div className="user-container">
                     <h3 className="user-name">{user?.name}</h3>
                     <p className="user-desc">{user?.bio}</p>
-                    <p><strong>Seguidores:</strong> <span>{user?.followers}</span></p>
-                    <p><strong>Repositórios:</strong> <span>{user?.public_repos}</span></p>
+                    <p><strong>Followers:</strong> <span>{user?.followers}</span></p>
+                    <p><strong>Repositories:</strong> <span>{user?.public_repos}</span></p>
                 </div>
             </div>
             <div className="repos">
-                <h5>Top 4 repositórios: </h5>
+                <h3>Top 4 repositories:</h3>
                 <ul>
-                    <li>Repositório 1</li>
-                    <li>Repositório 2</li>
-                    <li>Repositório 3</li>
-                    <li>Repositório 4</li>
+                    {
+                        repos
+                            ?.sort((a, b) => b.stargazers_count - a.stargazers_count)
+                            .map((repo, index) => {
+                                if (index < 4) {
+                                    return (
+                                        <li key={repo.id}>
+                                            <a href={repo.html_url} target="_blank" >
+                                                <p><strong>#{index + 1}</strong> {repo.name}</p>
+                                                <p><strong>Stars: </strong>{repo.stargazers_count}</p>
+                                                <p>{repo.html_url}</p>
+                                            </a>
+                                        </li>
+                                    )
+                                }
+                            })
+                    }
                 </ul>
             </div>
         </div>

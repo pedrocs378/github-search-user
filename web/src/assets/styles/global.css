@@ -4,6 +4,7 @@
     border: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
     outline: none;
 }
 
@@ -23,4 +24,5 @@ h5, button {
 
 p, span, li {
     font-weight: 400;
+    list-style-type: none;
 }
