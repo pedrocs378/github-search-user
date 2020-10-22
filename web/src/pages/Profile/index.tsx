@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
 import { FiLogIn } from 'react-icons/fi'
+import { BiGitRepoForked, BiStar } from 'react-icons/bi'
 import { VscError } from 'react-icons/vsc'
 import ReactLoading from 'react-loading'
 import { Link, useParams } from 'react-router-dom'
@@ -23,6 +24,7 @@ interface RepositoryUser {
     name: string
     html_url: string
     stargazers_count: number
+    forks: number
 }
 
 interface UserParams {
@@ -100,7 +102,10 @@ function Profile() {
                 </div>
             </div>
             <div className="repos">
-                <h3>Top 4 repositories</h3>
+                <h3>
+                    <span><BiStar size={25} /></span>
+                    Top 4 star repositories
+                </h3>
                 <ul>
                     {
                         repos
@@ -112,6 +117,29 @@ function Profile() {
                                             <a href={repo.html_url} target="_blank" rel="noopener noreferrer" >
                                                 <p><strong>#{index + 1}</strong> {repo.name}</p>
                                                 <p><strong>Stars: </strong>{repo.stargazers_count}</p>
+                                                <p>{repo.html_url}</p>
+                                            </a>
+                                        </li>
+                                    )
+                                }
+                            })
+                    }
+                </ul>
+                <h3>
+                    <span><BiGitRepoForked size={25} /></span>
+                    Top 4 fork repositories
+                </h3>
+                <ul>
+                    {
+                        repos
+                            ?.sort((a, b) => b.forks - a.forks)
+                            .map((repo, index) => {
+                                if (index < 4) {
+                                    return (
+                                        <li key={repo.id}>
+                                            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" >
+                                                <p><strong>#{index + 1}</strong> {repo.name}</p>
+                                                <p><strong>Forks: </strong>{repo.forks}</p>
                                                 <p>{repo.html_url}</p>
                                             </a>
                                         </li>
