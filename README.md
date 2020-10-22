@@ -10,7 +10,7 @@ O projeto foi desenvolvido com as seguintes tecnologias:
 
 ## :computer: Projeto
 
-Este projeto é uma pequena ideia utilizando da API do GitHub para recuperar informações do usuário quando um nome de usuário válido é inserido. Nele é exibido avatar, nome de usuário, contagem de seguidores, contagem de repositórios e 4 principais repositórios baseado nas estrelas.
+Este projeto é uma pequena ideia utilizando da API do GitHub para recuperar informações do usuário quando um nome de usuário válido é inserido. Nele é exibido avatar, nome de usuário, contagem de seguidores, contagem de repositórios e 4 principais repositórios baseado em estrelas e forks.
 
 ## :bookmark: Layout
 
