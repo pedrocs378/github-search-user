@@ -38,7 +38,7 @@ function Home() {
                     />
                 </div>
                 <button className="search" type="submit">
-                    Procurar
+                    Search
                 </button>
             </form>
         </div>
