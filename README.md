@@ -17,8 +17,10 @@ Este projeto é uma pequena ideia utilizando da API do GitHub para recuperar inf
 Abaixo estão o layout das duas telas desenvolvidas.
 
 <p align="center">
-    <img alt="Home" src=".github/home.png" width="100%">
-    <img alt="Profile" src=".github/profile.png" width="100%">
+    <img alt="Home" src=".github/home.png" width="700">
+    <br />
+    <br />
+    <img alt="Profile" src=".github/profile.png" width="700">
 </p>
 
 ## :clapper: Execução
