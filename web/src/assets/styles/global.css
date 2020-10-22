@@ -26,3 +26,23 @@ p, span, li {
     font-weight: 400;
     list-style-type: none;
 }
+
+@keyframes fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveDown {
+    from {
+        transform: translateY(-125%);
+    }
+
+    to {
+        transform: translateY(0%);
+    }
+}

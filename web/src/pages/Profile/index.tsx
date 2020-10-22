@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaArrowLeft } from 'react-icons/fa'
+import { FiLogIn } from 'react-icons/fi'
 import { VscError } from 'react-icons/vsc'
 import ReactLoading from 'react-loading'
 import { Link, useParams } from 'react-router-dom'
@@ -14,6 +15,7 @@ interface User {
     bio: string
     followers: number
     public_repos: number
+    html_url: string
 }
 
 interface RepositoryUser {
@@ -44,7 +46,6 @@ function Profile() {
                 api
                     .get(`${params.nickname}/repos`)
                     .then(({ data }) => {
-                        console.log(data)
                         setRepos(data)
                         setLoaded(true)
                     })
@@ -85,15 +86,21 @@ function Profile() {
                     <FaArrowLeft size={30} color="white" />
                 </Link>
                 <img src={user?.avatar_url} alt={user?.name} />
-                <div className="user-container">
-                    <h3 className="user-name">{user?.name}</h3>
-                    <p className="user-desc">{user?.bio}</p>
-                    <p><strong>Followers:</strong> <span>{user?.followers}</span></p>
-                    <p><strong>Repositories:</strong> <span>{user?.public_repos}</span></p>
+                <div className="content">
+                    <div className="user-container">
+                        <h3 className="user-name">{user?.name}</h3>
+                        <p className="user-desc">{user?.bio}</p>
+                        <p><strong>Followers:</strong> <span>{user?.followers}</span></p>
+                        <p><strong>Repositories:</strong> <span>{user?.public_repos}</span></p>
+                    </div>
+                    <a className="access-user" href={user?.html_url} target="_blank" rel="noopener noreferrer">
+                        <FiLogIn size={30} color="black" />
+                        <span>Go to profile</span>
+                    </a>
                 </div>
             </div>
             <div className="repos">
-                <h3>Top 4 repositories:</h3>
+                <h3>Top 4 repositories</h3>
                 <ul>
                     {
                         repos
