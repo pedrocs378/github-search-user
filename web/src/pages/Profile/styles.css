@@ -89,10 +89,13 @@
 
 #profile-page .repos h3 {
     margin-left: 15px;
+    font-size: 20px;
+    text-align: center;
 }
 
 #profile-page .repos ul {
     display: grid;
+    margin-top: 10px;
     grid-template-columns: 50% 50%;
 }
 
