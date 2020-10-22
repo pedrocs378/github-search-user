@@ -46,3 +46,16 @@ p, span, li {
         transform: translateY(0%);
     }
 }
+
+@keyframes nono {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  35% {
+    transform: translateX(-15%);
+  }
+  70% {
+    transform: translateX(15%);
+  }
+}

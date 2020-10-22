@@ -13,7 +13,17 @@ function Home() {
     function handleSearch(event: FormEvent) {
         event.preventDefault()
 
-        if (!nickname) {
+        const form = document.querySelector('#homepage form')
+
+        if (!nickname.trim()) {
+            form?.classList.add('validate-error')
+
+            const formError = document.querySelector('#homepage .validate-error')
+            if (formError) {
+                formError.addEventListener('animationend', (ev) => {
+                        formError.classList.remove('validate-error')
+                })
+            }
             return
         }
         

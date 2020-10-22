@@ -27,6 +27,11 @@
     align-items: center;  
 }
 
+#homepage form.validate-error {
+    animation: nono 200ms linear;
+    animation-iteration-count: 2;
+}
+
 #homepage form .input-container {
     display: flex;
     align-items: center;
