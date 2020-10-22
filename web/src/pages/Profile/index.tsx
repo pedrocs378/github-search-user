@@ -102,7 +102,7 @@ function Profile() {
                                 if (index < 4) {
                                     return (
                                         <li key={repo.id}>
-                                            <a href={repo.html_url} target="_blank" >
+                                            <a href={repo.html_url} target="_blank" rel="noopener noreferrer" >
                                                 <p><strong>#{index + 1}</strong> {repo.name}</p>
                                                 <p><strong>Stars: </strong>{repo.stargazers_count}</p>
                                                 <p>{repo.html_url}</p>
