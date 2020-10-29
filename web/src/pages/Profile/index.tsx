@@ -72,6 +72,8 @@ function Profile() {
                             if ((index >= 0) && (index <= 9)) {
                                 return true
                             }
+
+                            return false
                         }))
                         setRepos(data)
                         setLoaded(true)
@@ -83,20 +85,19 @@ function Profile() {
             })
         
     }, [params.nickname])
+    
 
     useEffect(() => {
-        handleReturnReposPerPage(page)
-    }, [page])
-
-    function handleReturnReposPerPage(page: number) {
         const aux = repos.filter((repo, index) => {
             if ((index >= (page - 1) * 10) && (index <= (page * 10) - 1)) {
                 return true
             }
+
+            return false
         }) as RepositoryUser[]
 
         setReposPerPage(aux)
-    }
+    }, [page, repos])
 
     if (!loaded) {
         return (
