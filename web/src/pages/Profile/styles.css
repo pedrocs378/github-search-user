@@ -78,6 +78,26 @@
     margin-top: 10px;
 }
 
+#profile-page .user .content .buttons-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+#profile-page .user .content .buttons-container button {
+    padding: 10px 0;
+    width: 48%;
+    background-color: white;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#profile-page .user .content .buttons-container .selected {
+    background-color: rgb(204, 204, 204);
+}
+
 #profile-page .repos {
     margin-top: 20px;
     width: 100%;
@@ -99,13 +119,13 @@
     margin-right: 10px;
 }
 
-#profile-page .repos ul {
+#profile-page .repos .grid {
     display: grid;
     margin-top: 10px;
     grid-template-columns: 50% 50%;
 }
 
-#profile-page .repos ul li {
+#profile-page .repos .grid .grid-item {
     margin: 10px 15px;
     padding: 10px;
     background-color: rgb(116, 116, 116);
@@ -115,7 +135,7 @@
 
 }
 
-#profile-page .repos ul li a {
+#profile-page .repos .grid .grid-item a {
     color: white;
 }
 

@@ -20,7 +20,7 @@ function Home() {
 
             const formError = document.querySelector('#homepage .validate-error')
             if (formError) {
-                formError.addEventListener('animationend', (ev) => {
+                formError.addEventListener('animationend', () => {
                         formError.classList.remove('validate-error')
                 })
             }

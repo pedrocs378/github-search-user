@@ -6,7 +6,7 @@ import Profile from './pages/Profile'
 
 function Router() {
     return (
-        <BrowserRouter>
+        <BrowserRouter forceRefresh={true} >
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/:nickname" exact component={Profile} />
