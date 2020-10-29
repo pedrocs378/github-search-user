@@ -28,4 +28,4 @@ Abaixo estão o layout das duas telas desenvolvidas.
 
 ## :clapper: Execução
 * Instale as bibliotecas utilizando `npm install` ou qualquer outro gerenciador de pacotes.
-* Execute utilizando `npm start`.
+* Execute utilizando `npm start`.  
